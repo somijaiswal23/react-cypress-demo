@@ -1,0 +1,14 @@
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+          - npm
+        script: # Modify the commands below to build your repository.
+          - apt-get update && apt-get -y install xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
+          - npm install
+          - npm test
+definitions:
+  caches:
+    npm: $HOME/.npm
+    cypress: $HOME/.cache/Cypress
